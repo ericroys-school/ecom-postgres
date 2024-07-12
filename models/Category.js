@@ -1,15 +1,17 @@
-const { Model, DataTypes } = require('sequelize');
+// const { Model, DataTypes } = require('sequelize');
+import { Sequelize } from 'sequelize';
+const {Model, DataTypes} = Sequelize;
 
-const sequelize = require('../config/connection.js');
+import { dbConnect } from '../config/connection.js';
 
-class Category extends Model {}
+export class Category extends Model {}
 
 Category.init(
   {
     // define columns
   },
   {
-    sequelize,
+    sequelize: dbConnect,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
@@ -17,4 +19,3 @@ Category.init(
   }
 );
 
-module.exports = Category;

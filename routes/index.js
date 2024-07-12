@@ -1,5 +1,8 @@
-const router = require('express').Router();
-const apiRoutes = require('./api');
+// const router = require('express').Router();
+// const apiRoutes = require('./api');
+import { Router } from 'express';
+const router = Router();
+import { apiRoutes } from './api/index.js';
 
 router.use('/api', apiRoutes);
 
@@ -7,4 +10,4 @@ router.use((req, res) => {
   res.send("<h1>Wrong Route!</h1>")
 });
 
-module.exports = router;
+export { router }

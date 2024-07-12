@@ -1,4 +1,5 @@
-const { ProductTag } = require('../models');
+// const { ProductTag } = require('../models');
+import { ProductTag } from '../models';
 
 const productTagData = [
   {

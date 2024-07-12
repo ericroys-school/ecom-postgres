@@ -1,5 +1,8 @@
-const router = require('express').Router();
-const { Product, Category, Tag, ProductTag } = require('../../models');
+// const router = require('express').Router();
+// const { Product, Category, Tag, ProductTag } = require('../../models');
+import { Router } from 'express';
+const router = Router();
+import { Product, Category, Tag, ProductTag } from '../../models/index.js';
 
 // The `/api/products` endpoint
 
@@ -96,4 +99,4 @@ router.delete('/:id', (req, res) => {
   // delete one product by its `id` value
 });
 
-module.exports = router;
+export { router as productRoutes }

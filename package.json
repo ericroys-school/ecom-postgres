@@ -12,11 +12,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ericroys-school/ecom-postgres.git"
+    "url": "git@github.com:ericroys-school/ecom-postgres.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Eric Roys",
+  "license": "Unlicense",
   "devDependencies": {
     "nodemon": "^2.0.3"
   },

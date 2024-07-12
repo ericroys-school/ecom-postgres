@@ -1,9 +1,18 @@
-const router = require('express').Router();
-const { Category, Product } = require('../../models');
+// const router = require('express').Router();
+// const { Category, Product } = require('../../models');
+import { Router } from 'express';
+const router = Router();
+import { Category, Product } from '../../models/index.js';
 
 // The `/api/categories` endpoint
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
+  try{
+    const r = await Category.findAll();
+    res.status(200).json(r);
+  }catch(err){
+    res.status(500).json({message: err});
+  }
   // find all categories
   // be sure to include its associated Products
 });
@@ -25,4 +34,5 @@ router.delete('/:id', (req, res) => {
   // delete a category by its `id` value
 });
 
-module.exports = router;
+export {router as categoryRoutes }
+
