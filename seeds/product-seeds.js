@@ -1,5 +1,5 @@
 // const { Product } = require('../models');
-import { Product }  from '../models';
+import { Product }  from '../models/Product.js';
 
 const productData = [
   {
@@ -34,6 +34,4 @@ const productData = [
   },
 ];
 
-const seedProducts = () => Product.bulkCreate(productData);
-
-module.exports = seedProducts;
+export const seedProducts = () => Product.bulkCreate(productData);
