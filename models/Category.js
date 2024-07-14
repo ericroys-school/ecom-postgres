@@ -8,7 +8,17 @@ export class Category extends Model {}
 
 Category.init(
   {
-    // define columns
+    id:{
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      unique: true,
+      autoIncrement: true,
+      primaryKey: true
+    },
+    category_name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
   },
   {
     sequelize: dbConnect,

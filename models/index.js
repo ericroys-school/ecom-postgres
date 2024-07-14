@@ -9,12 +9,20 @@ import {Tag} from './Tag.js';
 import {ProductTag} from './ProductTag.js';
 
 // Products belongsTo Category
+Product.belongsTo(Category, {
+  foreignKey: 'category_id'
+})
 
 // Categories have many Products
+Category.hasMany(Product, {
+  foreignKey: 'category_id',
+  onDelete: 'CASCADE'
+})
 
 // Products belongToMany Tags (through ProductTag)
-
+Product.belongsToMany(Tag, { through: 'ProductTag'})
 // Tags belongToMany Products (through ProductTag)
+Tag.belongsToMany(Tag, {through: 'ProductTag', as: 'product_tag'})
 
 export {
   Product,

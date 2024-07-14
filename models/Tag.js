@@ -8,7 +8,15 @@ export class Tag extends Model {}
 
 Tag.init(
   {
-    // define columns
+    id:{
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      allowNull: false,
+      primaryKey: true
+    },
+    tag_name: {
+      type: DataTypes.STRING
+    }
   },
   {
     sequelize: dbConnect,
