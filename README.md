@@ -9,7 +9,7 @@ A Node/Express RESTful implementation of a simplified e-commerce model with Post
 ## Table of Contents
 
 - [API Specification](#api-specification)
-- [Screenshots](#screen-shots)
+- [Video Demo](#video-demo)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Credits](#credits)
@@ -222,44 +222,26 @@ Status Codes:
 - 404 -> Unable to find the id provided
 - 500 -> Something went wrong with the backend
 
-### Screen Shots
+### Video Demo
 
-#### Initial Page Load
-
-When the page initially loads there are no notes to display and a user can add a new note.
-
-![Initial Page Load](./assets/images/ss_start.png)
-
-#### Note Create
-
-The user can add a new note.
-
-![New Note](./assets/images/ss_newEntry.png)
-
-#### Note Saved
-
-When the user saves the new note it is saved to the backend and displayed in the task list.
-
-![Save note](./assets/images/ss_entered.png)
-
-#### List Existing
-
-When more notes are added they are accumulated and displayed in a list for view.
-
-![List notes](./assets/images/ss_listed.png)
+There is a [short video](https://drive.google.com/file/d/1LZ34cJuHLK6ejcT2ioH30W3Z6ScwdYl6/view) to demonstrate the creation of the schema, seeding the demo data into the database, running the server, and then each CRUD scenario played with Insomnia.
 
 ### Installation
 
 1.  Install Node.js version 20.x or newer
-2.  Clone https://github.com/ericroys-school/note-taker.git
-3.  `cd` into the `note-taker` directory
-4.  Run `npm i` to load all the project dependencies
-5.  Run the program via `node server.js`
+2.  Install or use existing latest PostgreSql server
+3.  Clone https://github.com/ericroys-school/ecom-postgres.git
+4.  `cd` into the `ecom-postgres` directory
+5.  Run `npm i` to load all the project dependencies
+6.  Edit .env.EXAMPLE to include your postgresql credentials
+7.  Re-name .env.EXAMPLE to .env
+8.  Via psql run `CREATE DATABASE ecommerce_db;`
+9.  Add the demo data by running `npm run seed`
+10. Run the program via `node server.js`
 
 ### Usage
 
-If you are using from local installation then open the page at http://localhost:3001.
-There is an existing deployment via Render @ https://note-taker-lm30.onrender.com which is free so if it connects slow the first time it's because Amazon has recycled the spot instance the Render used for deployment and needs to spin up a new instance. Have patience, be kind, grab more coffee.
+The API should be available at http://localhost:3001 using the routes specified in the earlier API specification section.
 
 ### Credits
 
