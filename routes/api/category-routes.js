@@ -1,84 +1,87 @@
-// const router = require('express').Router();
-// const { Category, Product } = require('../../models');
-import { Router } from 'express';
+
+import { Router } from "express";
 const router = Router();
-import { Category, Product } from '../../models/index.js';
+import { Category, Product } from "../../models/index.js";
 
 // The `/api/categories` endpoint
 
-router.get('/', async (req, res) => {
-  try{
+router.get("/", async (req, res) => {
+  try {
     const r = await Category.findAll({
-      include: [{model: Product}]
+      include: [{ model: Product }],
     });
     res.status(200).json(r);
-  }catch(err){
-    res.status(500).json({message: err});
+  } catch (err) {
+    res.status(500).json({ message: err });
   }
   // find all categories
   // be sure to include its associated Products
 });
 
-router.get('/:id', async (req, res) => {
-
-  try{
+router.get("/:id", async (req, res) => {
+  try {
     const cat = await Category.findByPk(req.params.id, {
-      include: [{model: Product}]
+      include: [{ model: Product }],
     });
-    cat ? res.status(200).json(cat) : res.status(404).json({message: `unable to find [${req.params.id}]`})
-  }catch(err){
-    res.status(500).json(err)
+    cat
+      ? res.status(200).json(cat)
+      : res.status(404).json({ message: `unable to find [${req.params.id}]` });
+  } catch (err) {
+    res.status(500).json(err);
   }
   // find one category by its `id` value
   // be sure to include its associated Products
 });
 
-router.post('/', async (req, res) => {
-  const {category_name} = req.body;
-  if(category_name){
-    try{
+router.post("/", async (req, res) => {
+  const { category_name } = req.body;
+  if (category_name) {
+    try {
       const c = await Category.create(req.body);
-      res.status(201).json(c)
-    }catch(err){
-      res.status(500).json(err)
+      res.status(201).json(c);
+    } catch (err) {
+      res.status(500).json(err);
     }
-  }else{
-    res.status(400).json({message: `expected {"category_name": "a name"}`})
+  } else {
+    res.status(400).json({ message: `expected {"category_name": "a name"}` });
   }
   // create a new category
 });
 
-router.put('/:id', async (req, res) => {
+router.put("/:id", async (req, res) => {
   // update a category by its `id` value
-  const {category_name} = req.body;
-  if(category_name){
-    try{
+  const { category_name } = req.body;
+  if (category_name) {
+    try {
       const c = await Category.update(req.body, {
         where: {
-          id: req.params.id
-        }
-      })
+          id: req.params.id,
+        },
+      });
       res.status(200).json(c);
-    }catch(err){
-      res.status(500).json(err)
+    } catch (err) {
+      res.status(500).json(err);
     }
-  }else{
-    res.status(400).json({message: `expected {"category_name": "a new name"}`})
+  } else {
+    res
+      .status(400)
+      .json({ message: `expected {"category_name": "a new name"}` });
   }
 });
 
-router.delete('/:id', async (req, res) => {
-  try{
+router.delete("/:id", async (req, res) => {
+  try {
     const c = await Category.destroy({
       where: {
-        id: req.params.id
-      }
+        id: req.params.id,
+      },
     });
-    c ? res.status(200).json(c) : res.status(404).json({message: `unable to find [${req.params.id}]`})
-  }catch(err){
+    c
+      ? res.status(200).json(c)
+      : res.status(404).json({ message: `unable to find [${req.params.id}]` });
+  } catch (err) {
     res.status(500).json(err);
   }
 });
 
-export {router as categoryRoutes }
-
+export { router as categoryRoutes };

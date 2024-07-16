@@ -1,7 +1,4 @@
-// const router = require('express').Router();
-// const categoryRoutes = require('./category-routes');
-// const productRoutes = require('./product-routes');
-// const tagRoutes = require('./tag-routes');
+
 import { Router } from 'express';
 const router = Router();
 import {categoryRoutes} from './category-routes.js';

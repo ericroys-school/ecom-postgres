@@ -1,5 +1,3 @@
-// const router = require('express').Router();
-// const { Product, Category, Tag, ProductTag } = require('../../models');
 import { Router } from "express";
 const router = Router();
 import { Product, Category, Tag, ProductTag } from "../../models/index.js";
@@ -29,11 +27,11 @@ router.get("/:id", async (req, res) => {
     const prod = await Product.findByPk(req.params.id, {
       include: [{ model: Category }, { model: Tag }],
     });
-    if (!prod)
-      res
-        .status(404)
-        .json({ message: `no product found with id [${req.params.id}` });
-    res.status(200).json(prod);
+    !prod
+      ? res
+          .status(404)
+          .json({ message: `no product found with id [${req.params.id}` })
+      : res.status(200).json(prod);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -119,7 +117,7 @@ router.put("/:id", (req, res) => {
 
 router.delete("/:id", async (req, res) => {
   // delete one product by its `id` value
-  if (!req.params.id) res.status(400).json({ message: "no id provided" });
+
   try {
     let prod = await Product.destroy({
       where: {

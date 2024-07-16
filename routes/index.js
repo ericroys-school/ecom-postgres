@@ -1,5 +1,3 @@
-// const router = require('express').Router();
-// const apiRoutes = require('./api');
 import { Router } from 'express';
 const router = Router();
 import { apiRoutes } from './api/index.js';

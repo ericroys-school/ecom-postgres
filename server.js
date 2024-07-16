@@ -1,5 +1,3 @@
-// const express = require('express');
-// const routes = require('./routes');
 import express from "express";
 import { router as apiRouter } from "./routes/index.js";
 // import sequelize connection
