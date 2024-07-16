@@ -121,16 +121,16 @@ router.delete("/:id", async (req, res) => {
   // delete one product by its `id` value
   if (!req.params.id) res.status(400).json({ message: "no id provided" });
   try {
-    let prod = await Product.destroy(
-      {
-        where: {
-          id: req.params.id,
-        },
-      }
-    );
-    if (!prod)
-      res.status(404).json({ message: `product [${req.params.id}] not found` });
-    res.status(200).json(prod);
+    let prod = await Product.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+    !prod
+      ? res
+          .status(404)
+          .json({ message: `product [${req.params.id}] not found` })
+      : res.status(200).json(prod);
   } catch (err) {
     console.error(err);
     res.status(500).json(err);
